@@ -71,6 +71,9 @@ func Initialize() {
 	err = MpvInstance.ObserveProperty(0, "loop-playlist", mpv.FORMAT_FLAG)
 	utils.HandleError(err, "Cannot observer loop-playlist property")
 
+	err = MpvInstance.ObserveProperty(0, "core-idle", mpv.FORMAT_FLAG)
+	utils.HandleError(err, "Cannot observer core-idle property")
+
 	// start event listener
 	startEventHandler()
 

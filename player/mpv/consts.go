@@ -3,7 +3,7 @@ package mpv
 //#include <mpv/client.h>
 import "C"
 
-//Errors mpv_error
+// Errors mpv_error
 const (
 	/**
 	 * No error happened (used to signal successful operation).
@@ -106,7 +106,7 @@ const (
 
 type Format int
 
-//Format mpv_format
+// Format mpv_format
 const (
 	FORMAT_NONE Format = C.MPV_FORMAT_NONE
 	/**
@@ -231,7 +231,7 @@ const (
 
 type EventId int
 
-//EventId  mpv_event_id
+// EventId  mpv_event_id
 const (
 	/**
 	 * Nothing happened. Happens on timeouts or sporadic wakeups.
@@ -286,7 +286,7 @@ const (
 	 *             "track-list" property. The event is redundant, and might
 	 *             be removed in the far future.
 	 */
-	EVENT_TRACKS_CHANGED EventId = C.MPV_EVENT_TRACKS_CHANGED
+	// EVENT_TRACKS_CHANGED EventId = C.MPV_EVENT_TRACKS_CHANGED
 	/**
 	 * A video/audio/subtitle track was switched on or off.
 	 *
@@ -294,7 +294,7 @@ const (
 	 *             "vid", "aid", and "sid" properties. The event is redundant,
 	 *             and might be removed in the far future.
 	 */
-	EVENT_TRACK_SWITCHED EventId = C.MPV_EVENT_TRACK_SWITCHED
+	// EVENT_TRACK_SWITCHED EventId = C.MPV_EVENT_TRACK_SWITCHED
 	/**
 	 * Idle mode was entered. In this mode, no file is played, and the playback
 	 * core waits for new commands. (The command line player normally quits
@@ -322,7 +322,7 @@ const (
 	 * @deprecated The event is redundant with mpv_observe_property() as
 	 *             mentioned above, and might be removed in the far future.
 	 */
-	EVENT_PAUSE EventId = C.MPV_EVENT_PAUSE
+	// EVENT_PAUSE EventId = C.MPV_EVENT_PAUSE
 	/**
 	 * Playback was unpaused. See EVENT_PAUSE = C.MPV_EVENT_PAUSE
 	 *
@@ -330,7 +330,7 @@ const (
 	 *             explained in the EVENT_PAUSE = C.MPV_EVENT_PAUSE
 	 *             removed in the far future.
 	 */
-	EVENT_UNPAUSE EventId = C.MPV_EVENT_UNPAUSE
+	// EVENT_UNPAUSE EventId = C.MPV_EVENT_UNPAUSE
 	/**
 	 * Sent every time after a video frame is displayed. Note that currently,
 	 * this will be sent in lower frequency if there is no video, or playback
@@ -346,7 +346,7 @@ const (
 	 *             This event never happens anymore, and is included in this
 	 *             header only for compatibility.
 	 */
-	EVENT_SCRIPT_INPUT_DISPATCH EventId = C.MPV_EVENT_SCRIPT_INPUT_DISPATCH
+	// EVENT_SCRIPT_INPUT_DISPATCH EventId = C.MPV_EVENT_SCRIPT_INPUT_DISPATCH
 	/**
 	 * Triggered by the script_message input command. The command uses the
 	 * first argument of the command as client name (see mpv_client_name()) to
@@ -380,7 +380,7 @@ const (
 	 *             "metadata" property. The event is redundant, and might
 	 *             be removed in the far future.
 	 */
-	EVENT_METADATA_UPDATE EventId = C.MPV_EVENT_METADATA_UPDATE
+	// EVENT_METADATA_UPDATE EventId = C.MPV_EVENT_METADATA_UPDATE
 	/**
 	 * Happens when a seek was initiated. Playback stops. Usually it will
 	 * resume with EVENT_PLAYBACK_RESTART = C.MPV_EVENT_PLAYBACK_RESTART
@@ -405,7 +405,7 @@ const (
 	 *             "chapter" property. The event is redundant, and might
 	 *             be removed in the far future.
 	 */
-	EVENT_CHAPTER_CHANGE EventId = C.MPV_EVENT_CHAPTER_CHANGE
+	// EVENT_CHAPTER_CHANGE EventId = C.MPV_EVENT_CHAPTER_CHANGE
 	/**
 	 * Happens if the internal per-mpv_handle ringbuffer overflows, and at
 	 * least 1 event had to be dropped. This can happen if the client doesn't
@@ -457,34 +457,44 @@ func (eid EventId) String() string {
 		{
 			return "EVENT_FILE_LOADED"
 		}
-	case EVENT_TRACKS_CHANGED:
-		{
-			return "EVENT_TRACKS_CHANGED"
-		}
-	case EVENT_TRACK_SWITCHED:
-		{
-			return "EVENT_TRACK_SWITCHED"
-		}
+		/*
+			case EVENT_TRACKS_CHANGED:
+				{
+					return "EVENT_TRACKS_CHANGED"
+				}
+		*/
+		/*
+			case EVENT_TRACK_SWITCHED:
+				{
+					return "EVENT_TRACK_SWITCHED"
+				}
+		*/
 	case EVENT_IDLE:
 		{
 			return "EVENT_IDLE"
 		}
-	case EVENT_PAUSE:
-		{
-			return "EVENT_PAUSE"
-		}
-	case EVENT_UNPAUSE:
-		{
-			return "EVENT_UNPAUSE"
-		}
+		/*
+			case EVENT_PAUSE:
+				{
+					return "EVENT_PAUSE"
+				}
+		*/
+		/*
+			case EVENT_UNPAUSE:
+				{
+					return "EVENT_UNPAUSE"
+				}
+		*/
 	case EVENT_TICK:
 		{
 			return "EVENT_TICK"
 		}
-	case EVENT_SCRIPT_INPUT_DISPATCH:
-		{
-			return "EVENT_SCRIPT_INPUT_DISPATCH"
-		}
+		/*
+			case EVENT_SCRIPT_INPUT_DISPATCH:
+				{
+					return "EVENT_SCRIPT_INPUT_DISPATCH"
+				}
+		*/
 	case EVENT_CLIENT_MESSAGE:
 		{
 			return "EVENT_CLIENT_MESSAGE"
@@ -497,10 +507,12 @@ func (eid EventId) String() string {
 		{
 			return "EVENT_AUDIO_RECONFIG"
 		}
-	case EVENT_METADATA_UPDATE:
-		{
-			return "EVENT_METADATA_UPDATE"
-		}
+	/*
+		case EVENT_METADATA_UPDATE:
+			{
+				return "EVENT_METADATA_UPDATE"
+			}
+	*/
 	case EVENT_SEEK:
 		{
 			return "EVENT_SEEK"
@@ -513,10 +525,12 @@ func (eid EventId) String() string {
 		{
 			return "EVENT_PROPERTY_CHANGE"
 		}
-	case EVENT_CHAPTER_CHANGE:
-		{
-			return "EVENT_CHAPTER_CHANGE"
-		}
+	/*
+		case EVENT_CHAPTER_CHANGE:
+			{
+				return "EVENT_CHAPTER_CHANGE"
+			}
+	*/
 	case EVENT_QUEUE_OVERFLOW:
 		{
 			return "EVENT_QUEUE_OVERFLOW"
@@ -525,7 +539,7 @@ func (eid EventId) String() string {
 	return "UNKNOWN_EVENT"
 }
 
-//Log level  mpv_log_level
+// Log level  mpv_log_level
 const (
 	LOG_LEVEL_NONE  = C.MPV_LOG_LEVEL_NONE  /// "no"    - disable absolutely all messages
 	LOG_LEVEL_FATAL = C.MPV_LOG_LEVEL_FATAL /// "fatal" - critical/aborting errors
@@ -539,7 +553,7 @@ const (
 
 type EndFileReason int
 
-//EndFileReason mpv_end_file_reason
+// EndFileReason mpv_end_file_reason
 const (
 	/**
 	 * The end of file was reached. Sometimes this may also happen on
@@ -594,14 +608,14 @@ func (efr EndFileReason) String() string {
 
 type SubApi int
 
-//mpv_sub_api
+// mpv_sub_api
 const (
-	/**
-	 * For using mpv's OpenGL renderer on an external OpenGL context.
-	 * mpv_get_sub_api(MPV_SUB_API_OPENGL_CB) returns mpv_opengl_cb_context*.
-	 * This context can be used with mpv_opengl_cb_* functions.
-	 * Will return NULL if unavailable (if OpenGL support was not compiled in).
-	 * See opengl_cb.h for details.
-	 */
-	SUB_API_OPENGL_CB SubApi = C.MPV_SUB_API_OPENGL_CB
+/**
+ * For using mpv's OpenGL renderer on an external OpenGL context.
+ * mpv_get_sub_api(MPV_SUB_API_OPENGL_CB) returns mpv_opengl_cb_context*.
+ * This context can be used with mpv_opengl_cb_* functions.
+ * Will return NULL if unavailable (if OpenGL support was not compiled in).
+ * See opengl_cb.h for details.
+ */
+// SUB_API_OPENGL_CB SubApi = C.MPV_SUB_API_OPENGL_CB
 )
